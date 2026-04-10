@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Session List</title>
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+
+<body class="bg-light">
+
+
+
+
+<nav class="navbar navbar-dark bg-primary px-3">
+    <a class="navbar-brand" th:href="@{/}">
+        Home
+    </a>
+
+    <div class="ms-auto">
+        <a class="btn btn-light" th:href="@{/sessions/add}">
+            <i class="fa-solid fa-plus me-1"></i> Add Session
+        </a>
+    </div>
+</nav>
+
+
+
+
+<div class="container-fluid mt-4">
+
+    <h2 class="mb-4 text-primary">Tutor Session List</h2>
+
+
+    <table class="table table-bordered table-striped w-100">
+
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Student Name</th>
+            <th>Course</th>
+            <th>Topic</th>
+            <th>Visit Date</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="sessions : ${sessions}">
+            <td th:text="${sessions.id}"></td>
+            <td th:text="${sessions.studentName}"></td>
+            <td th:text="${sessions.course}"></td>
+            <td th:text="${sessions.topic}"></td>
+            <td th:text="${sessions.visitDate}"></td>
+            <td th:text="${sessions.status}"></td>
+
+            <td>
+                <a class="btn btn-warning btn-lg me-2"
+                   th:href="@{/sessions/edit/{id}(id=${sessions.id})}">
+                    <i class="fa-solid fa-pen-to-square me-1"></i> Edit
+                </a>
+
+                <a class="btn btn-danger btn-lg"
+                   th:href="@{/sessions/delete/{id}(id=${sessions.id})}"
+                   onclick="return confirm('Are you sure you want to delete this sessions?')">
+                    <i class="fa-solid fa-trash me-1"></i> Delete
+                </a>
+            </td>
+        </tr>
+        </tbody>
+
+    </table>
+
+</div>
+
+</body>
+</html>
