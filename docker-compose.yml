@@ -10,4 +10,4 @@ services:
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://10.67.16.3:3306/springboot
       SPRING_DATASOURCE_USERNAME: springapp
-      SPRING_DATASOURCE_PASSWORD: mathuserpassword
+      SPRING_DATASOURCE_PASSWORD: Mathuserpassword@1
